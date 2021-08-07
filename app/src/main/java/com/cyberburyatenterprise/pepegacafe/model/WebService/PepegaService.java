@@ -15,7 +15,7 @@ public interface PepegaService {
     Call<Category> getCategories();
 
     @GET("search.php")
-    Call<List<Object>> getSearchDish(@Query("s") String query);
+    Call<Category> getSearchMeals(@Query("s") String query);
 
     @GET("filter.php")
     Call<Category> getCategoryMeals(@Query("c") String category);

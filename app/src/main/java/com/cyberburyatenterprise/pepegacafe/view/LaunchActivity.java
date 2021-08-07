@@ -49,7 +49,7 @@ public class LaunchActivity extends AppCompatActivity {
 
             public void onFinish() {
                 NavDirections toMainActivity = LaunchScreenFragmentDirections
-                        .actionLaunchScreenFragmentToMainActivity();
+                        .actionLaunchScreenFragmentToGetStartedFragment();
                 navController.navigate(toMainActivity);
                 //mTextField.setText("done!");
             }

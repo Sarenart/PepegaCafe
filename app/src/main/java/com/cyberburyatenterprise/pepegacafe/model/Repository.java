@@ -28,8 +28,9 @@ public class Repository {
     private final PepegaService pepegaService;
 
     MutableLiveData<List<String>> categories = new MutableLiveData<>();
-    MutableLiveData<List<Meal>> meals = new MutableLiveData<>();
-   // private ArrayList<Object> foodFromS
+    MutableLiveData<List<Meal>> mealsByCategory = new MutableLiveData<>();
+    MutableLiveData<List<Meal>> mealsByQuery = new MutableLiveData<>();
+    // private ArrayList<Object> foodFromS
 
     public static Repository getInstance(Application application){
         if (instance == null){
@@ -56,7 +57,7 @@ public class Repository {
                         categoryList.add(category.getStrCategory());
                         Log.d("Category", category.getStrCategory());
                     }
-                    Repository.this.categories.setValue(categoryList);
+                    Repository.this.categories.postValue(categoryList);
                 }
             }
 
@@ -68,21 +69,28 @@ public class Repository {
         return Repository.this.categories;
     }
 
-    public MutableLiveData<List<Meal>> getMealsByCategory(String category){
+
+    public MutableLiveData<List<Meal>> getMealsByCategory(){
+
+        return this.mealsByCategory;
+    }
+
+    public void updateMealsByCategory(String category){
+        clearMealsByCategory();
         Call<Category> call = pepegaService.getCategoryMeals(category);
         call.enqueue(new Callback<Category>() {
             @Override
             public void onResponse(@NotNull Call<Category> call, @NotNull Response<Category> response) {
-                Category categories = response.body();
+                Category meals = response.body();
 
-                if(categories != null && categories.getMeals() != null){
-                    List<String> categoryList = new ArrayList<String>();
+                if(meals != null && meals.getMeals() != null){
+                    List<Meal> mealList = new ArrayList<Meal>();
                     for (Meal meal:
-                            categories.getMeals()) {
-                        categoryList.add(meal.getStrMeal());
+                            meals.getMeals()) {
+                        mealList.add(meal);
                         Log.d("Meal", meal.getStrMeal() + ", "+ meal.getStrCategory());
                     }
-                    Repository.this.categories.setValue(categoryList);
+                    Repository.this.mealsByCategory.postValue(mealList);
                 }
             }
 
@@ -91,6 +99,48 @@ public class Repository {
 
             }
         });
-        return this.meals;
+    }
+
+
+    public MutableLiveData<List<Meal>> getMealsByQuery(){
+        return this.mealsByQuery;
+    }
+
+    public void updateMealsByQuery(String query){
+        clearMealsByQuery();
+        Call<Category> call = pepegaService.getSearchMeals(query);
+        call.enqueue(new Callback<Category>() {
+            @Override
+            public void onResponse(@NotNull Call<Category> call, @NotNull Response<Category> response) {
+                Category meals = response.body();
+
+                if(meals != null && meals.getMeals() != null){
+                    List<Meal> mealList = new ArrayList<Meal>();
+                    for (Meal meal:
+                            meals.getMeals()) {
+                        mealList.add(meal);
+                        Log.d("Meal", meal.getStrMeal() + ", "+ meal.getStrCategory());
+                    }
+                Repository.this.mealsByQuery.postValue(mealList);
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<Category> call, @NotNull Throwable t) {
+
+            }
+        });
+    }
+
+    public void clearCategories(){
+        mealsByCategory.setValue(new ArrayList<>());
+    }
+
+    public void clearMealsByCategory(){
+        mealsByCategory.setValue(new ArrayList<>());
+    }
+
+    public void clearMealsByQuery(){
+        mealsByQuery.setValue(new ArrayList<>());
     }
 }

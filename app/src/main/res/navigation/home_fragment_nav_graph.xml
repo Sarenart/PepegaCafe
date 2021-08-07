@@ -9,10 +9,18 @@
         android:id="@+id/foodCategoryFragment"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.FoodCategoryFragment"
         android:label="fragment_food_category"
-        tools:layout="@layout/fragment_food_category" />
+        tools:layout="@layout/fragment_food_category" >
+        <action
+            android:id="@+id/action_foodCategoryFragment_to_foodSearchFragment"
+            app:destination="@id/foodSearchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/foodSearchFragment"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.FoodSearchFragment"
         android:label="fragment_food_search"
-        tools:layout="@layout/fragment_food_search" />
+        tools:layout="@layout/fragment_food_search" >
+        <action
+            android:id="@+id/action_foodSearchFragment_to_foodCategoryFragment"
+            app:destination="@id/foodCategoryFragment" />
+    </fragment>
 </navigation>

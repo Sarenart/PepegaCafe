@@ -14,10 +14,11 @@ import java.util.List;
 
 public class SharedViewModel extends AndroidViewModel {
 
-    private Repository repository;
+    private final Repository repository;
     private MutableLiveData<List<String>> categories = new MutableLiveData<>();
-    private MutableLiveData<List<Meal>> MealsByCategory = new MutableLiveData<>();
+    //private MutableLiveData<List<Meal>> MealsByCategory = new MutableLiveData<>();
     private MutableLiveData<String> searchQuery = new MutableLiveData<>();
+    private MutableLiveData<String> chosenCategory = new MutableLiveData<>();
 
 
     public SharedViewModel(Application application) {
@@ -30,10 +31,35 @@ public class SharedViewModel extends AndroidViewModel {
         //return categories;
     }
 
-    public LiveData<List<Meal>> getMealsByCategories(String category) {
-        return repository.getMealsByCategory(category);
-        //return categories;
+    public LiveData<List<Meal>> getMealsByCategory() {
+        return repository.getMealsByCategory();
+
     }
 
+    public void updateMealsByCategory(String category){
+        repository.updateMealsByCategory(category);
+    }
+
+    public LiveData<List<Meal>> getMealsByQuery() {
+        return repository.getMealsByQuery();
+
+    }
+
+    public void updateMealsByQuery(String query){
+        repository.updateMealsByQuery(query);
+    }
+
+    public LiveData<String> getChosenCategory(){
+        return chosenCategory;
+    }
+
+    public void setChosenCategory(String category){
+        chosenCategory.setValue(category);
+    }
+
+
+    public void clearCategories(){
+        repository.clearCategories();
+    }
 
 }
