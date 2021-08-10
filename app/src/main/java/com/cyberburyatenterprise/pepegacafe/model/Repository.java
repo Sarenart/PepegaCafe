@@ -55,7 +55,6 @@ public class Repository {
                     for (Meal category:
                             categories.getMeals()) {
                         categoryList.add(category.getStrCategory());
-                        Log.d("Category", category.getStrCategory());
                     }
                     Repository.this.categories.postValue(categoryList);
                 }
@@ -76,7 +75,7 @@ public class Repository {
     }
 
     public void updateMealsByCategory(String category){
-        clearMealsByCategory();
+        //clearMealsByCategory();
         Call<Category> call = pepegaService.getCategoryMeals(category);
         call.enqueue(new Callback<Category>() {
             @Override
@@ -88,7 +87,6 @@ public class Repository {
                     for (Meal meal:
                             meals.getMeals()) {
                         mealList.add(meal);
-                        Log.d("Meal", meal.getStrMeal() + ", "+ meal.getStrCategory());
                     }
                     Repository.this.mealsByCategory.postValue(mealList);
                 }
@@ -107,7 +105,7 @@ public class Repository {
     }
 
     public void updateMealsByQuery(String query){
-        clearMealsByQuery();
+        //clearMealsByQuery();
         Call<Category> call = pepegaService.getSearchMeals(query);
         call.enqueue(new Callback<Category>() {
             @Override
@@ -119,7 +117,7 @@ public class Repository {
                     for (Meal meal:
                             meals.getMeals()) {
                         mealList.add(meal);
-                        Log.d("Meal", meal.getStrMeal() + ", "+ meal.getStrCategory());
+
                     }
                 Repository.this.mealsByQuery.postValue(mealList);
                 }
@@ -132,9 +130,6 @@ public class Repository {
         });
     }
 
-    public void clearCategories(){
-        mealsByCategory.setValue(new ArrayList<>());
-    }
 
     public void clearMealsByCategory(){
         mealsByCategory.setValue(new ArrayList<>());

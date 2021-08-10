@@ -1,10 +1,12 @@
 package com.cyberburyatenterprise.pepegacafe.view;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.cyberburyatenterprise.pepegacafe.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -33,13 +35,16 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home,
-                R.id.navigation_like,
+                R.id.navigation_favorite,
                 R.id.navigation_person,
-                R.id.navigation_timer)
+                R.id.navigation_update)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.mainScreenContainerView);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.BottomNavigationView, navController);
+
+
     }
+
 
 }

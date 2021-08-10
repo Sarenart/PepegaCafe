@@ -7,4 +7,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="get_started">Get Started</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="plug_title">No orders yet</string>
+    <string name="plug_text_below">Click the button below to start ordering</string>
+    <string name="plug_button">Start ordering</string>
 </resources>

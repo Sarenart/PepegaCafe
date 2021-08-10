@@ -63,7 +63,7 @@ public class FoodSearchFragment extends Fragment {
 
     private void setSearchList(){
         RecyclerView mealRecyclerView = binding.searchRecyclerView;
-        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 4));
+        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         mealRecyclerView.setHasFixedSize(true);
 
         mealRecyclerViewAdapter = new MealRecyclerViewAdapter();

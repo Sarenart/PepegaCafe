@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_like"
+        android:id="@+id/navigation_favorite"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_plug" />
@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_plug" />
 
     <fragment
-        android:id="@+id/navigation_timer"
+        android:id="@+id/navigation_update"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />

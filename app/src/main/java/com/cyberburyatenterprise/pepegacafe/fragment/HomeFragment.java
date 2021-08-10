@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -28,6 +29,21 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private NavController navController;
     private FragmentManager fragmentManager;
+    private boolean hasOrientationChanged;
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        /*OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                getActivity().finishAndRemoveTask();
+                Log.d("State", "Back pressed");
+            }
+        };
+        getActivity().getOnBackPressedDispatcher().addCallback(callback);*/
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,39 +59,35 @@ public class HomeFragment extends Fragment {
 
         assert navHostFragment != null;
         navController = navHostFragment.getNavController();
-        //binding.FoodTabLayout.addTab(binding.FoodTabLayout.newTab().setText("Welcome"));
-        //binding.FoodTabLayout.addTab(binding.FoodTabLayout.newTab().setText("to"));
-        //binding.FoodTabLayout.addTab(binding.FoodTabLayout.newTab().setText("the"));
-        //binding.FoodTabLayout.addTab(binding.FoodTabLayout.newTab().setText("club,"));
-        //binding.FoodTabLayout.addTab(binding.FoodTabLayout.newTab().setText("buddy"));
 
-        //binding.FoodTabLayout.se
-        /*final TextView textView = binding.textHome;
-        sharedViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
+
+
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        hasOrientationChanged = savedInstanceState != null;
         binding.SearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    NavDirections toFoodSearchFragment = FoodCategoryFragmentDirections
-                            .actionFoodCategoryFragmentToFoodSearchFragment();
-                    navController.navigate(toFoodSearchFragment);
+                    if(!hasOrientationChanged) {
+                        NavDirections toFoodSearchFragment = FoodCategoryFragmentDirections
+                                .actionFoodCategoryFragmentToFoodSearchFragment();
+                        navController.navigate(toFoodSearchFragment);
+                    }
+                    hasOrientationChanged = false;
                 }
 
                 else{
-                    NavDirections toFoodCategoryFragment = FoodSearchFragmentDirections
-                            .actionFoodSearchFragmentToFoodCategoryFragment();
-                    navController.navigate(toFoodCategoryFragment);
+                    if(!hasOrientationChanged) {
+                        NavDirections toFoodCategoryFragment = FoodSearchFragmentDirections
+                                .actionFoodSearchFragmentToFoodCategoryFragment();
+                        navController.navigate(toFoodCategoryFragment);
+                    }
+                    hasOrientationChanged = false;
                 }
 
                 Log.d("Focus", hasFocus ? "Focused" : "Not focused");

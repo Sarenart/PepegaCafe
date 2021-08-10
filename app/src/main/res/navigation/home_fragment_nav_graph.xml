@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_food_category" >
         <action
             android:id="@+id/action_foodCategoryFragment_to_foodSearchFragment"
-            app:destination="@id/foodSearchFragment" />
+            app:destination="@id/foodSearchFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/foodSearchFragment"
@@ -21,6 +25,10 @@
         tools:layout="@layout/fragment_food_search" >
         <action
             android:id="@+id/action_foodSearchFragment_to_foodCategoryFragment"
-            app:destination="@id/foodCategoryFragment" />
+            app:destination="@id/foodCategoryFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
 </navigation>

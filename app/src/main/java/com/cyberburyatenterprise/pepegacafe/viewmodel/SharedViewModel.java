@@ -58,8 +58,8 @@ public class SharedViewModel extends AndroidViewModel {
     }
 
 
-    public void clearCategories(){
+    /*public void clearCategories(){
         repository.clearCategories();
-    }
+    }*/
 
 }

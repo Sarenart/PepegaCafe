@@ -20,6 +20,8 @@ import com.cyberburyatenterprise.pepegacafe.databinding.FragmentGetStartedBindin
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class GetStartedFragment extends Fragment {
 
     FragmentGetStartedBinding binding;
@@ -46,7 +48,7 @@ public class GetStartedFragment extends Fragment {
 
         binding.gettingStartedButton.setOnClickListener(v -> {
 
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
 
             NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.launchScreenContainerView);
 

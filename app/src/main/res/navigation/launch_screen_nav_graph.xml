@@ -13,7 +13,10 @@
 
         <action
             android:id="@+id/action_launchScreenFragment_to_getStartedFragment"
-            app:destination="@id/getStartedFragment" />
+            app:destination="@id/getStartedFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/launchScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -26,6 +29,9 @@
         tools:layout="@layout/fragment_get_started" >
         <action
             android:id="@+id/action_getStartedFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            app:destination="@id/mainActivity"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/launch_screen_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

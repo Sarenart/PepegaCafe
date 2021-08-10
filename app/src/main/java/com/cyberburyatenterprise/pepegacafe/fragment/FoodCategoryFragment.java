@@ -75,7 +75,7 @@ public class FoodCategoryFragment extends Fragment {
 
         assert getParentFragment() != null;
         sharedViewModel = new ViewModelProvider(getParentFragment()).get(SharedViewModel.class);
-        sharedViewModel.clearCategories();
+        //sharedViewModel.clearCategories();
 
         sharedViewModel.getCategories().observe(getViewLifecycleOwner(), (categories)->{
             binding.foodTabLayout.removeAllTabs();
@@ -89,6 +89,7 @@ public class FoodCategoryFragment extends Fragment {
         });
 
         sharedViewModel.getChosenCategory().observe(getViewLifecycleOwner(),  (chosenCategory)->{
+            mealRecyclerViewAdapter.clearMealArrayList();
             sharedViewModel.updateMealsByCategory(chosenCategory);
         });
 
@@ -104,7 +105,7 @@ public class FoodCategoryFragment extends Fragment {
         sharedViewModel.getCategories().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getChosenCategory().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getMealsByCategory().removeObservers(getViewLifecycleOwner());
-        sharedViewModel.clearCategories();
+        //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
         mealRecyclerViewAdapter.clearMealArrayList();
     }
@@ -115,7 +116,7 @@ public class FoodCategoryFragment extends Fragment {
         sharedViewModel.getCategories().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getChosenCategory().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getMealsByCategory().removeObservers(getViewLifecycleOwner());
-        sharedViewModel.clearCategories();
+        //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
         mealRecyclerViewAdapter.clearMealArrayList();
 
