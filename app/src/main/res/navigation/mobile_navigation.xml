@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_getStartedFragment2"
+            app:destination="@id/getStartedFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favorite"
@@ -28,5 +32,10 @@
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />
+    <fragment
+        android:id="@+id/getStartedFragment2"
+        android:name="com.cyberburyatenterprise.pepegacafe.fragment.GetStartedFragment"
+        android:label="fragment_get_started"
+        tools:layout="@layout/fragment_get_started" />
 
 </navigation>

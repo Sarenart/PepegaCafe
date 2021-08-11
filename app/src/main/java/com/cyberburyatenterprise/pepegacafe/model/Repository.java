@@ -44,6 +44,10 @@ public class Repository {
     }
 
     public MutableLiveData<List<String>> getCategories(){
+        return categories;
+    }
+
+    public MutableLiveData<List<String>> updateCategories(){
         Call<Category> call = pepegaService.getCategories();
         call.enqueue(new Callback<Category>() {
             @Override
@@ -132,10 +136,13 @@ public class Repository {
 
 
     public void clearMealsByCategory(){
-        mealsByCategory.setValue(new ArrayList<>());
+        mealsByCategory.postValue(new ArrayList<>());
+    }
+    public void clearCategories(){
+        categories.postValue(new ArrayList<>());
     }
 
     public void clearMealsByQuery(){
-        mealsByQuery.setValue(new ArrayList<>());
+        mealsByQuery.postValue(new ArrayList<>());
     }
 }

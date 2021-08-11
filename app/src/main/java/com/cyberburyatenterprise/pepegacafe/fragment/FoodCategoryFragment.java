@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -51,6 +52,11 @@ public class FoodCategoryFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -77,6 +83,7 @@ public class FoodCategoryFragment extends Fragment {
         sharedViewModel = new ViewModelProvider(getParentFragment()).get(SharedViewModel.class);
         //sharedViewModel.clearCategories();
 
+        sharedViewModel.updateCategories();
         sharedViewModel.getCategories().observe(getViewLifecycleOwner(), (categories)->{
             binding.foodTabLayout.removeAllTabs();
             for (String category:
@@ -116,15 +123,18 @@ public class FoodCategoryFragment extends Fragment {
         sharedViewModel.getCategories().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getChosenCategory().removeObservers(getViewLifecycleOwner());
         sharedViewModel.getMealsByCategory().removeObservers(getViewLifecycleOwner());
+        sharedViewModel.clearMealsByCategory();
+        sharedViewModel.clearCategories();
         //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
+        binding.foodTabLayout.removeAllTabs();
         mealRecyclerViewAdapter.clearMealArrayList();
 
     }
 
     private void setMealList() {
         RecyclerView mealRecyclerView = binding.mealRecyclerView;
-        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), getResources().getInteger(R.integer.recyclerview_column_number)));
         mealRecyclerView.setHasFixedSize(true);
 
         mealRecyclerViewAdapter = new MealRecyclerViewAdapter();

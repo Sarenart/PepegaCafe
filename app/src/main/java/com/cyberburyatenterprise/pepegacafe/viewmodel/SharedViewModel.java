@@ -31,6 +31,10 @@ public class SharedViewModel extends AndroidViewModel {
         //return categories;
     }
 
+    public void updateCategories(){
+        repository.updateCategories();
+    }
+
     public LiveData<List<Meal>> getMealsByCategory() {
         return repository.getMealsByCategory();
 
@@ -58,8 +62,13 @@ public class SharedViewModel extends AndroidViewModel {
     }
 
 
-    /*public void clearCategories(){
+    public void clearMealsByCategory(){
+        repository.clearMealsByCategory();
+    }
+    public void clearCategories(){
         repository.clearCategories();
-    }*/
-
+    }
+    public void clearMealsByQuery(){
+        repository.clearMealsByQuery();
+    }
 }

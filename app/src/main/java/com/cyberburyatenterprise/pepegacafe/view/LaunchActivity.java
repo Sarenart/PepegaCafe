@@ -31,7 +31,7 @@ public class LaunchActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager
-                .findFragmentById(R.id.launchScreenContainerView);
+                .findFragmentById(R.id.launch_screen_container_view);
 
         assert navHostFragment != null;
         navController = navHostFragment.getNavController();

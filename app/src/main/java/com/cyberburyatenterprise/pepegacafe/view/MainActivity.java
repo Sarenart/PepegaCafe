@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.BottomNavigationView);
+        BottomNavigationView navView = binding.bottomNavigationView;//findViewById(R.id.bottom_navigation_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.mainScreenContainerView);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.BottomNavigationView, navController);
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
 
     }

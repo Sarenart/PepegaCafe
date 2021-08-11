@@ -1,5 +1,6 @@
 package com.cyberburyatenterprise.pepegacafe.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class HomeFragment extends Fragment {
     private SharedViewModel sharedViewModel;
     private FragmentHomeBinding binding;
     private NavController navController;
+    private FragmentManager parentFragmentManager;
     private FragmentManager fragmentManager;
     private boolean hasOrientationChanged;
 
@@ -35,14 +37,19 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+       /* OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 getActivity().finishAndRemoveTask();
                 Log.d("State", "Back pressed");
             }
         };
-        getActivity().getOnBackPressedDispatcher().addCallback(callback);*/
+        getActivity().getOnBackPressedDispatcher().addCallback(this,callback);*/
+    }
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -54,6 +61,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         fragmentManager = getChildFragmentManager();
+
 
         NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.HomeContainerView);
 
@@ -101,11 +109,22 @@ public class HomeFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                sharedViewModel.updateMealsByQuery(newText);
-                Log.d("Search", newText);
+                if(!newText.equals("")) {
+                    sharedViewModel.updateMealsByQuery(newText);
+                    Log.d("Search", newText);
+                }
+                else sharedViewModel.clearMealsByQuery();
                 return true;
+
             }
         });
+
+        parentFragmentManager = getParentFragmentManager();
+        NavHostFragment nhf =(NavHostFragment) parentFragmentManager.findFragmentById(R.id.mainScreenContainerView);
+        assert nhf != null;
+        NavController nvctr = nhf.getNavController();
+        NavDirections tosmw = HomeFragmentDirections.actionNavigationHomeToGetStartedFragment2();
+        nvctr.navigate(tosmw);
     }
 
 

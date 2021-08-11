@@ -50,7 +50,7 @@ public class GetStartedFragment extends Fragment {
 
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
 
-            NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.launchScreenContainerView);
+            NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.launch_screen_container_view);
 
             assert navHostFragment != null;
             NavController navController = navHostFragment.getNavController();
