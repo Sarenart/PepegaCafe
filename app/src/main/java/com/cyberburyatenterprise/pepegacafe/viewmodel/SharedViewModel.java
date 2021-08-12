@@ -19,15 +19,18 @@ public class SharedViewModel extends AndroidViewModel {
     //private MutableLiveData<List<Meal>> MealsByCategory = new MutableLiveData<>();
     private MutableLiveData<String> searchQuery = new MutableLiveData<>();
     private MutableLiveData<String> chosenCategory = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isDataLoaded = new MutableLiveData<>();
 
 
     public SharedViewModel(Application application) {
         super(application);
         repository = Repository.getInstance(application);
+        setDataLoaded(false);
     }
 
     public LiveData<List<String>> getCategories() {
         return repository.getCategories();
+
         //return categories;
     }
 
@@ -59,6 +62,14 @@ public class SharedViewModel extends AndroidViewModel {
 
     public void setChosenCategory(String category){
         chosenCategory.setValue(category);
+    }
+
+    public LiveData<Boolean> isDataLoaded() {
+        return isDataLoaded;
+    }
+
+    public void setDataLoaded(boolean dataLoaded) {
+        isDataLoaded.setValue(dataLoaded);
     }
 
 

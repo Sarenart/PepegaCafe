@@ -8,13 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.FoodCategoryFragment">
+        <SearchView
+            android:id="@+id/category_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="4dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search for a meal"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/foodTabLayout"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/category_search_view"
             app:tabMode="scrollable"
 
             android:layout_margin="4dp">

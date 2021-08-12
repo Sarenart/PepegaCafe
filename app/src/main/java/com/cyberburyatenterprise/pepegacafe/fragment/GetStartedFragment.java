@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
@@ -17,14 +18,16 @@ import android.view.ViewGroup;
 
 import com.cyberburyatenterprise.pepegacafe.R;
 import com.cyberburyatenterprise.pepegacafe.databinding.FragmentGetStartedBinding;
+import com.cyberburyatenterprise.pepegacafe.viewmodel.SharedViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class GetStartedFragment extends Fragment {
+public class GetStartedFragment extends BaseFragment {
 
-    FragmentGetStartedBinding binding;
+    //private SharedViewModel sharedViewModel;
+    private FragmentGetStartedBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,17 +49,22 @@ public class GetStartedFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        assert getParentFragment() != null;
+        //sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
         binding.gettingStartedButton.setOnClickListener(v -> {
 
             FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
 
-            NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.launch_screen_container_view);
+            NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.main_screen_container_view);
 
             assert navHostFragment != null;
             NavController navController = navHostFragment.getNavController();
 
-            NavDirections toMainActivity = GetStartedFragmentDirections.actionGetStartedFragmentToMainActivity();
-            navController.navigate(toMainActivity);
+            getSharedViewModel().setDataLoaded(true);
+
+            NavDirections toFoodCategory = GetStartedFragmentDirections.actionGetStartedFragmentToFoodCategoryFragment();
+            navController.navigate(toFoodCategory);
         });
     }
 }

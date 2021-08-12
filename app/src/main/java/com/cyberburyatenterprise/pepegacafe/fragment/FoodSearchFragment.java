@@ -7,13 +7,17 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.cyberburyatenterprise.pepegacafe.R;
 import com.cyberburyatenterprise.pepegacafe.adapters.MealRecyclerViewAdapter;
@@ -27,9 +31,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 
-public class FoodSearchFragment extends Fragment {
+public class FoodSearchFragment extends BaseFragment {
 
-    private SharedViewModel sharedViewModel;
+    //private SharedViewModel sharedViewModel;
     private MealRecyclerViewAdapter mealRecyclerViewAdapter;
     private FragmentFoodSearchBinding binding;
 
@@ -45,6 +49,7 @@ public class FoodSearchFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_search, container, false);
         setSearchList();
+        setSearchView();
         return binding.getRoot();
         //return inflater.inflate(R.layout.fragment_food_search, container, false);
     }
@@ -54,11 +59,12 @@ public class FoodSearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         assert getParentFragment() != null;
-        sharedViewModel = new ViewModelProvider(getParentFragment()).get(SharedViewModel.class);
+        //getSharedViewModel() = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-        sharedViewModel.getMealsByQuery().observe(getViewLifecycleOwner(), meals -> {
+        getSharedViewModel().getMealsByQuery().observe(getViewLifecycleOwner(), meals -> {
             mealRecyclerViewAdapter.setMealArrayList((ArrayList<Meal>) meals);
         });
+
     }
 
     private void setSearchList(){
@@ -71,5 +77,60 @@ public class FoodSearchFragment extends Fragment {
 
         mealRecyclerViewAdapter.setOnItemClickListener((meal ->{
             Log.d("Click", meal.getStrMeal().toString());}));
+    }
+    private void setSearchView(){
+        /*binding.querySearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    if(!hasOrientationChanged) {
+                        NavDirections toFoodSearchFragment = FoodCategoryFragmentDirections
+                                .actionFoodCategoryFragmentToFoodSearchFragment();
+                        navController.navigate(toFoodSearchFragment);
+                    }
+                    hasOrientationChanged = false;
+                }
+
+                else{
+                    if(!hasOrientationChanged) {
+                        NavDirections toFoodCategoryFragment = FoodSearchFragmentDirections
+                                .actionFoodSearchFragmentToFoodCategoryFragment();
+                        navController.navigate(toFoodCategoryFragment);
+                    }
+                    hasOrientationChanged = false;
+                }
+
+                Log.d("Focus", hasFocus ? "Focused" : "Not focused");
+            }
+        });*/
+        binding.querySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(!newText.equals("")) {
+                    getSharedViewModel().updateMealsByQuery(newText);
+                    Log.d("Search", newText);
+                }
+                else getSharedViewModel().clearMealsByQuery();
+                return true;
+
+            }
+        });
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        //binding.querySearchView.requestFocus();
+        binding.querySearchView.post(()->{binding.querySearchView.requestFocusFromTouch();});
     }
 }

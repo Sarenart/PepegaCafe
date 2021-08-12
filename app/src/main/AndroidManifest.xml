@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PepegaCafe"
         android:windowSoftInputMode="adjustPan">
-        <activity
-            android:name=".view.MainActivity"
-            android:label="@string/title_activity_main"></activity>
 
         <activity android:name=".view.LaunchActivity"
             android:screenOrientation="portrait">

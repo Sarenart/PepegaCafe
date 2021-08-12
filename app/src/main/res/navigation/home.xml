@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/foodCategoryFragment">
+
+    <fragment
+        android:id="@+id/foodCategoryFragment"
+        android:name="com.cyberburyatenterprise.pepegacafe.fragment.FoodCategoryFragment"
+        android:label="fragment_food_category"
+        tools:layout="@layout/fragment_food_category" >
+        <action
+            android:id="@+id/action_foodCategoryFragment_to_foodSearchFragment"
+            app:destination="@id/foodSearchFragment" />
+        <action
+            android:id="@+id/action_foodCategoryFragment_to_navigation"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/foodCategoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/foodSearchFragment"
+        android:name="com.cyberburyatenterprise.pepegacafe.fragment.FoodSearchFragment"
+        android:label="fragment_food_search"
+        tools:layout="@layout/fragment_food_search" >
+        <action
+            android:id="@+id/action_foodSearchFragment_to_foodCategoryFragment"
+            app:destination="@id/foodCategoryFragment" />
+    </fragment>
+
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/launchScreenFragment">
+        <fragment
+            android:id="@+id/launchScreenFragment"
+            android:name="com.cyberburyatenterprise.pepegacafe.fragment.LaunchScreenFragment"
+            android:label="fragment_launch_screen"
+            tools:layout="@layout/fragment_launch_screen">
+            <action
+                android:id="@+id/action_launchScreenFragment_to_getStartedFragment"
+                app:destination="@id/getStartedFragment"
+                app:popUpTo="@id/launchScreenFragment"
+                app:popUpToInclusive="true"/>
+        </fragment>
+
+        <fragment
+            android:id="@+id/getStartedFragment"
+            android:name="com.cyberburyatenterprise.pepegacafe.fragment.GetStartedFragment"
+            android:label="fragment_get_started"
+            tools:layout="@layout/fragment_get_started">
+            <action
+                android:id="@+id/action_getStartedFragment_to_foodCategoryFragment"
+                app:destination="@id/foodCategoryFragment"
+                app:popUpTo="@id/getStartedFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+    </navigation>
+
+</navigation>

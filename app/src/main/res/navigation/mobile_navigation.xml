@@ -3,39 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/home">
+
+    <include app:graph="@navigation/home" />
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.cyberburyatenterprise.pepegacafe.fragment.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_getStartedFragment2"
-            app:destination="@id/getStartedFragment2" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_favorite"
+        android:id="@+id/favorite"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_plug" />
 
     <fragment
-        android:id="@+id/navigation_person"
+        android:id="@+id/person"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />
 
     <fragment
-        android:id="@+id/navigation_update"
+        android:id="@+id/update"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />
-    <fragment
-        android:id="@+id/getStartedFragment2"
-        android:name="com.cyberburyatenterprise.pepegacafe.fragment.GetStartedFragment"
-        android:label="fragment_get_started"
-        tools:layout="@layout/fragment_get_started" />
+
+
+
 
 </navigation>
