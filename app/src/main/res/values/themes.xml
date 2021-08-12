@@ -21,7 +21,7 @@
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/vivid_red</item>
-        <item name="colorOnPrimary">@color/vivid_red</item>
+        <item name="colorOnPrimary">@color/soft_red</item>
         <item name="android:tabStripEnabled">false</item>
     </style>
 

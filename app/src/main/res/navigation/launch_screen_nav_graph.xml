@@ -31,7 +31,7 @@
             android:id="@+id/action_getStartedFragment_to_mainActivity"
             app:destination="@id/mainActivity"
             app:launchSingleTop="true"
-            app:popUpTo="@id/launch_screen_nav_graph"
+            app:popUpTo="@id/launchScreenFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

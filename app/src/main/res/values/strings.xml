@@ -11,4 +11,6 @@
     <string name="plug_title">No orders yet</string>
     <string name="plug_text_below">Click the button below to start ordering</string>
     <string name="plug_button">Start ordering</string>
+    <string name="title_recent_orders">Recent orders</string>
+    <string name="title_profile">Profile</string>
 </resources>

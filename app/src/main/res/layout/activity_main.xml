@@ -21,7 +21,7 @@
         app:labelVisibilityMode="unlabeled"/>
 
     <fragment
-        android:id="@+id/mainScreenContainerView"
+        android:id="@+id/main_screen_container_view"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -1,5 +1,6 @@
 package com.cyberburyatenterprise.pepegacafe.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,19 +38,12 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       /* OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                getActivity().finishAndRemoveTask();
-                Log.d("State", "Back pressed");
-            }
-        };
-        getActivity().getOnBackPressedDispatcher().addCallback(this,callback);*/
     }
 
     @Override
     public void onAttach(@NonNull @NotNull Context context) {
         super.onAttach(context);
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -63,7 +57,7 @@ public class HomeFragment extends Fragment {
         fragmentManager = getChildFragmentManager();
 
 
-        NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.HomeContainerView);
+        NavHostFragment navHostFragment = (NavHostFragment) fragmentManager.findFragmentById(R.id.home_container_view);
 
         assert navHostFragment != null;
         navController = navHostFragment.getNavController();
@@ -77,7 +71,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         hasOrientationChanged = savedInstanceState != null;
-        binding.SearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+        binding.searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
@@ -101,7 +95,7 @@ public class HomeFragment extends Fragment {
                 Log.d("Focus", hasFocus ? "Focused" : "Not focused");
             }
         });
-        binding.SearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -119,13 +113,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        parentFragmentManager = getParentFragmentManager();
-        NavHostFragment nhf =(NavHostFragment) parentFragmentManager.findFragmentById(R.id.mainScreenContainerView);
-        assert nhf != null;
-        NavController nvctr = nhf.getNavController();
-        NavDirections tosmw = HomeFragmentDirections.actionNavigationHomeToGetStartedFragment2();
-        nvctr.navigate(tosmw);
     }
+
 
 
     @Override

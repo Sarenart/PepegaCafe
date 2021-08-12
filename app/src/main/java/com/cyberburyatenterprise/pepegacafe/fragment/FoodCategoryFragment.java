@@ -59,7 +59,7 @@ public class FoodCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mealRecyclerViewAdapter.clearMealArrayList();
         binding.foodTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -114,7 +114,7 @@ public class FoodCategoryFragment extends Fragment {
         sharedViewModel.getMealsByCategory().removeObservers(getViewLifecycleOwner());
         //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
-        mealRecyclerViewAdapter.clearMealArrayList();
+        //mealRecyclerViewAdapter.clearMealArrayList();
     }
 
     @Override
@@ -128,14 +128,14 @@ public class FoodCategoryFragment extends Fragment {
         //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
         binding.foodTabLayout.removeAllTabs();
-        mealRecyclerViewAdapter.clearMealArrayList();
+        //mealRecyclerViewAdapter.clearMealArrayList();
 
     }
 
     private void setMealList() {
         RecyclerView mealRecyclerView = binding.mealRecyclerView;
         mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), getResources().getInteger(R.integer.recyclerview_column_number)));
-        mealRecyclerView.setHasFixedSize(true);
+       // mealRecyclerView.setHasFixedSize(true);
 
         mealRecyclerViewAdapter = new MealRecyclerViewAdapter();
         mealRecyclerView.setAdapter(mealRecyclerViewAdapter);

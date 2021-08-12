@@ -14,11 +14,11 @@
     <item
         android:id="@+id/navigation_person"
         android:icon="@drawable/ic_baseline_person_outline_24"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_profile" />
 
     <item
         android:id="@+id/navigation_update"
         android:icon="@drawable/ic_baseline_update_24"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_recent_orders" />
 
 </menu>

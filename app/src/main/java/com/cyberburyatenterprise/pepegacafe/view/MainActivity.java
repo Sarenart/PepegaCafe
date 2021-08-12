@@ -39,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_person,
                 R.id.navigation_update)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.mainScreenContainerView);
+        navController = Navigation.findNavController(this, R.id.main_screen_container_view);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
 
     }
-
 
 }
