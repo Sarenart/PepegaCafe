@@ -30,7 +30,7 @@
 
         </com.google.android.material.tabs.TabLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.cyberburyatenterprise.pepegacafe.GridRecyclerView
             android:id="@+id/meal_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"

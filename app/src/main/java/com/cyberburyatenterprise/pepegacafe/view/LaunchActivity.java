@@ -2,7 +2,6 @@ package com.cyberburyatenterprise.pepegacafe.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
@@ -11,16 +10,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 
 import com.cyberburyatenterprise.pepegacafe.R;
 import com.cyberburyatenterprise.pepegacafe.databinding.ActivityLaunchBinding;
-import com.cyberburyatenterprise.pepegacafe.databinding.ActivityMainBinding;
 import com.cyberburyatenterprise.pepegacafe.fragment.FoodCategoryFragmentDirections;
-import com.cyberburyatenterprise.pepegacafe.fragment.LaunchScreenFragmentDirections;
 import com.cyberburyatenterprise.pepegacafe.viewmodel.SharedViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -57,31 +52,17 @@ public class LaunchActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        /*new CountDownTimer(3000, 1000) {
 
-            public void onTick(long millisUntilFinished) {
-                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                NavDirections toMainActivity = LaunchScreenFragmentDirections
-                        .actionLaunchScreenFragmentToGetStartedFragment();
-                navController.navigate(toMainActivity);
-                //mTextField.setText("done!");
-            }
-        }.start();*/
-
-        BottomNavigationView navView = binding.bottomNavigationView;//findViewById(R.id.bottom_navigation_view);
+        BottomNavigationView navView = binding.bottomNavigationView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.home,
                 R.id.favorite,
-                R.id.person,
-                R.id.update)
+                R.id.profile,
+                R.id.recent_orders)
                 .build();
         navController = Navigation.findNavController(this, R.id.main_screen_container_view);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
 
         binding.bottomNavigationView.setVisibility(View.GONE);

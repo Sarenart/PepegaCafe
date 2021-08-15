@@ -7,24 +7,70 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/test">
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/get_started_background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="-100dp"
+            android:layout_marginEnd="-100dp"
+            android:layout_marginTop="-100dp"
+            android:background="@drawable/get_started_background"
+            android:contentDescription="@string/get_started_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/getting_started_button"
+            android:layout_marginBottom="16dp"/>
+
+        <ImageView
+            android:id="@+id/get_started_pizza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintHeight_max="240dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintWidth_max="360dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/pizza"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/get_started_meal"
+            app:layout_constraintBottom_toBottomOf="@id/get_started_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/get_started_title" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/getting_started_button"
-            android:paddingHorizontal="32dp"
+            android:paddingHorizontal="36dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="220dp"
             android:text="@string/get_started"
             android:textSize="16sp"
+            android:textColor="@color/white"
             android:background="@drawable/custom_button"
             android:layout_marginBottom="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/get_started_background"/>
+
+        <TextView
+            android:id="@+id/get_started_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="48sp"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/delicious_meals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/get_started_pizza"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

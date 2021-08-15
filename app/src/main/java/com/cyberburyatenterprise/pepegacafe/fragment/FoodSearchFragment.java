@@ -33,7 +33,6 @@ import java.util.ArrayList;
 
 public class FoodSearchFragment extends BaseFragment {
 
-    //private SharedViewModel sharedViewModel;
     private MealRecyclerViewAdapter mealRecyclerViewAdapter;
     private FragmentFoodSearchBinding binding;
 
@@ -51,7 +50,6 @@ public class FoodSearchFragment extends BaseFragment {
         setSearchList();
         setSearchView();
         return binding.getRoot();
-        //return inflater.inflate(R.layout.fragment_food_search, container, false);
     }
 
     @Override
@@ -59,7 +57,6 @@ public class FoodSearchFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         assert getParentFragment() != null;
-        //getSharedViewModel() = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         getSharedViewModel().getMealsByQuery().observe(getViewLifecycleOwner(), meals -> {
             mealRecyclerViewAdapter.setMealArrayList((ArrayList<Meal>) meals);
@@ -79,30 +76,6 @@ public class FoodSearchFragment extends BaseFragment {
             Log.d("Click", meal.getStrMeal().toString());}));
     }
     private void setSearchView(){
-        /*binding.querySearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    if(!hasOrientationChanged) {
-                        NavDirections toFoodSearchFragment = FoodCategoryFragmentDirections
-                                .actionFoodCategoryFragmentToFoodSearchFragment();
-                        navController.navigate(toFoodSearchFragment);
-                    }
-                    hasOrientationChanged = false;
-                }
-
-                else{
-                    if(!hasOrientationChanged) {
-                        NavDirections toFoodCategoryFragment = FoodSearchFragmentDirections
-                                .actionFoodSearchFragmentToFoodCategoryFragment();
-                        navController.navigate(toFoodCategoryFragment);
-                    }
-                    hasOrientationChanged = false;
-                }
-
-                Log.d("Focus", hasFocus ? "Focused" : "Not focused");
-            }
-        });*/
         binding.querySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -124,13 +97,11 @@ public class FoodSearchFragment extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        //binding.querySearchView.requestFocus();
         binding.querySearchView.post(()->{binding.querySearchView.requestFocusFromTouch();});
     }
 }

@@ -12,11 +12,11 @@
 
 
     <size
-        android:width="40dp"
-        android:height="20dp"/>
+        android:width="400dp"
+        android:height="600dp"/>
 
     <corners android:radius="4dp"
-        android:bottomLeftRadius="16dp"
-        android:topRightRadius="16dp"/>
+        android:bottomLeftRadius="300dp"
+        android:bottomRightRadius="300dp"/>
 
 </shape>

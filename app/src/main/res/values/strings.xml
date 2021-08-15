@@ -13,4 +13,8 @@
     <string name="plug_button">Start ordering</string>
     <string name="title_recent_orders">Recent orders</string>
     <string name="title_profile">Profile</string>
+    <string name="get_started_meal">get_started_meal</string>
+    <string name="get_started_background">get_started_background</string>
+    <string name="delicious_meals">Delicious meals</string>
+    <string name="shashlik">shashlik</string>
 </resources>

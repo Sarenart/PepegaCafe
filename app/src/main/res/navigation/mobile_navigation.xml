@@ -14,13 +14,13 @@
         tools:layout="@layout/fragment_plug" />
 
     <fragment
-        android:id="@+id/person"
+        android:id="@+id/profile"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />
 
     <fragment
-        android:id="@+id/update"
+        android:id="@+id/recent_orders"
         android:name="com.cyberburyatenterprise.pepegacafe.fragment.PlugFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_plug" />

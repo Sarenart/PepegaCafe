@@ -50,7 +50,6 @@ public class GetStartedFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         assert getParentFragment() != null;
-        //sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         binding.gettingStartedButton.setOnClickListener(v -> {
 

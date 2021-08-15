@@ -23,14 +23,12 @@ import retrofit2.Response;
 public class Repository {
 
     private static Repository instance;
-
-    private ExecutorService executorService;
     private final PepegaService pepegaService;
 
     MutableLiveData<List<String>> categories = new MutableLiveData<>();
     MutableLiveData<List<Meal>> mealsByCategory = new MutableLiveData<>();
     MutableLiveData<List<Meal>> mealsByQuery = new MutableLiveData<>();
-    // private ArrayList<Object> foodFromS
+
 
     public static Repository getInstance(Application application){
         if (instance == null){
@@ -79,7 +77,6 @@ public class Repository {
     }
 
     public void updateMealsByCategory(String category){
-        //clearMealsByCategory();
         Call<Category> call = pepegaService.getCategoryMeals(category);
         call.enqueue(new Callback<Category>() {
             @Override
@@ -109,7 +106,6 @@ public class Repository {
     }
 
     public void updateMealsByQuery(String query){
-        //clearMealsByQuery();
         Call<Category> call = pepegaService.getSearchMeals(query);
         call.enqueue(new Callback<Category>() {
             @Override

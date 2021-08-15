@@ -44,14 +44,13 @@ public class LaunchScreenFragment extends Fragment {
         new CountDownTimer(3000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                //mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+
             }
 
             public void onFinish() {
                 NavDirections toMainActivity = LaunchScreenFragmentDirections
                         .actionLaunchScreenFragmentToGetStartedFragment();
                 navController.navigate(toMainActivity);
-                //mTextField.setText("done!");
             }
         }.start();
     }

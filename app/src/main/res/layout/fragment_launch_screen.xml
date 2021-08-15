@@ -5,9 +5,47 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.LaunchScreenFragment"
-    android:background="@drawable/launch_screen">
+    android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/launch_screen_shashlik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_max="400dp"
+        app:layout_constraintWidth_max="320dp"
+        android:background="@drawable/shashlik"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:contentDescription="@string/shashlik" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pepega Meals"
+        android:textStyle="italic|bold"
+        android:textSize="48sp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/launch_screen_shashlik"
+        android:textColor="@color/black"/>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+   <!-- <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="200dp"
@@ -18,7 +56,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/launch_screen_title_circle">
-
 
         <ImageView
             android:id="@+id/pepega_title_image"
@@ -32,6 +69,7 @@
             android:scaleType="centerInside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/pepega_title"
@@ -52,7 +90,7 @@
             app:layout_constraintLeft_toLeftOf="@id/pepega_title_image"
             app:layout_constraintRight_toRightOf="@+id/pepega_title"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

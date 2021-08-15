@@ -12,12 +12,12 @@
         android:title="@string/title_favorite" />
 
     <item
-        android:id="@+id/person"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="@string/title_profile" />
 
     <item
-        android:id="@+id/update"
+        android:id="@+id/recent_orders"
         android:icon="@drawable/ic_baseline_update_24"
         android:title="@string/title_recent_orders" />
 

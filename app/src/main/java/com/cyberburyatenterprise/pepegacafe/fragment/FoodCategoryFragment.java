@@ -19,8 +19,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
+import com.cyberburyatenterprise.pepegacafe.GridRecyclerView;
 import com.cyberburyatenterprise.pepegacafe.R;
 import com.cyberburyatenterprise.pepegacafe.adapters.MealRecyclerViewAdapter;
 import com.cyberburyatenterprise.pepegacafe.databinding.FragmentFoodCategoryBinding;
@@ -34,7 +37,6 @@ import java.util.ArrayList;
 
 public class FoodCategoryFragment extends BaseFragment {
 
-    //private SharedViewModel sharedViewModel;
     private FragmentFoodCategoryBinding binding;
     private MealRecyclerViewAdapter mealRecyclerViewAdapter;
     private NavController navController;
@@ -53,7 +55,6 @@ public class FoodCategoryFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_category, container,false);
         setMealList();
         return binding.getRoot();
-        //return inflater.inflate(R.layout.fragment_food_category, container, false);
     }
 
     @Override
@@ -70,20 +71,15 @@ public class FoodCategoryFragment extends BaseFragment {
         assert navHostFragment != null;
         navController = navHostFragment.getNavController();
 
-        //sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-
-        mealRecyclerViewAdapter.clearMealArrayList();
-
         binding.foodTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                //Log.d( "Tab", tab.getText().toString());
                 getSharedViewModel().setChosenCategory(tab.getText().toString());
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                mealRecyclerViewAdapter.clearMealArrayList();
+
             }
 
             @Override
@@ -104,7 +100,6 @@ public class FoodCategoryFragment extends BaseFragment {
         });
 
         getSharedViewModel().getChosenCategory().observe(getViewLifecycleOwner(),  (chosenCategory)->{
-            mealRecyclerViewAdapter.clearMealArrayList();
             getSharedViewModel().updateMealsByCategory(chosenCategory);
         });
 
@@ -128,9 +123,9 @@ public class FoodCategoryFragment extends BaseFragment {
         getSharedViewModel().getChosenCategory().removeObservers(getViewLifecycleOwner());
         getSharedViewModel().getMealsByCategory().removeObservers(getViewLifecycleOwner());
         getSharedViewModel().clearMealsByCategory();
-        //sharedViewModel.clearCategories();
+
         binding.foodTabLayout.clearOnTabSelectedListeners();
-        //mealRecyclerViewAdapter.clearMealArrayList();
+
     }
 
     @Override
@@ -141,19 +136,17 @@ public class FoodCategoryFragment extends BaseFragment {
         getSharedViewModel().getMealsByCategory().removeObservers(getViewLifecycleOwner());
         getSharedViewModel().clearMealsByCategory();
         getSharedViewModel().clearCategories();
-        //sharedViewModel.clearCategories();
         binding.foodTabLayout.clearOnTabSelectedListeners();
         binding.foodTabLayout.removeAllTabs();
-        //mealRecyclerViewAdapter.clearMealArrayList();
-
     }
 
     private void setMealList() {
-        RecyclerView mealRecyclerView = binding.mealRecyclerView;
+        GridRecyclerView mealRecyclerView = binding.mealRecyclerView;
         mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), getResources().getInteger(R.integer.recyclerview_column_number)));
-       // mealRecyclerView.setHasFixedSize(true);
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(requireContext(),R.anim.layout_animation);
 
         mealRecyclerViewAdapter = new MealRecyclerViewAdapter();
+        mealRecyclerView.setLayoutAnimation(animationController);
         mealRecyclerView.setAdapter(mealRecyclerViewAdapter);
 
         mealRecyclerViewAdapter.setOnItemClickListener((meal ->{

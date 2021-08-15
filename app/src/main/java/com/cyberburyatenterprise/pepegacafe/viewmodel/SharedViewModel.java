@@ -15,9 +15,6 @@ import java.util.List;
 public class SharedViewModel extends AndroidViewModel {
 
     private final Repository repository;
-    private MutableLiveData<List<String>> categories = new MutableLiveData<>();
-    //private MutableLiveData<List<Meal>> MealsByCategory = new MutableLiveData<>();
-    private MutableLiveData<String> searchQuery = new MutableLiveData<>();
     private MutableLiveData<String> chosenCategory = new MutableLiveData<>();
     private MutableLiveData<Boolean> isDataLoaded = new MutableLiveData<>();
 
@@ -30,8 +27,6 @@ public class SharedViewModel extends AndroidViewModel {
 
     public LiveData<List<String>> getCategories() {
         return repository.getCategories();
-
-        //return categories;
     }
 
     public void updateCategories(){
