@@ -34,6 +34,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FoodCategoryFragment extends BaseFragment {
 
@@ -74,7 +75,7 @@ public class FoodCategoryFragment extends BaseFragment {
         binding.foodTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                getSharedViewModel().setChosenCategory(tab.getText().toString());
+                getSharedViewModel().setChosenCategory(Objects.requireNonNull(tab.getText()).toString());
             }
 
             @Override
@@ -150,7 +151,7 @@ public class FoodCategoryFragment extends BaseFragment {
         mealRecyclerView.setAdapter(mealRecyclerViewAdapter);
 
         mealRecyclerViewAdapter.setOnItemClickListener((meal ->{
-            Log.d("Click", meal.getStrMeal().toString());}));
+            Log.d("Click", meal.getStrMeal());}));
     }
 
 

@@ -21,19 +21,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:contentDescription="@string/shashlik" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/launch_screen_pepega_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pepega Meals"
-        android:textStyle="italic|bold"
-        android:textSize="48sp"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHeight_max="@dimen/pepega_height"
+        android:background="@drawable/pepega_title"
+        android:scaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/launch_screen_shashlik"
-        android:textColor="@color/black"/>
+        android:contentDescription="@string/shashlik" />
+
 
 
     <ProgressBar
