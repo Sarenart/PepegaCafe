@@ -66,7 +66,7 @@ public class FoodSearchFragment extends BaseFragment {
 
     private void setSearchList(){
         RecyclerView mealRecyclerView = binding.searchRecyclerView;
-        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        mealRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), getResources().getInteger(R.integer.recyclerview_column_number)));
         mealRecyclerView.setHasFixedSize(true);
 
         mealRecyclerViewAdapter = new MealRecyclerViewAdapter();
