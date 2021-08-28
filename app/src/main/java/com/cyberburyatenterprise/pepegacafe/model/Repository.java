@@ -45,7 +45,7 @@ public class Repository {
         return categories;
     }
 
-    public MutableLiveData<List<String>> updateCategories(){
+    public void updateCategories(){
         Call<Category> call = pepegaService.getCategories();
         call.enqueue(new Callback<Category>() {
             @Override
@@ -67,7 +67,7 @@ public class Repository {
                 Log.d("FOOD", "Failure: " + t.getMessage());
             }
         });
-        return Repository.this.categories;
+       // return Repository.this.categories;
     }
 
 
