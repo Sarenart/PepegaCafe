@@ -7,4 +7,5 @@
     <dimen name="pizza_height">360dp</dimen>
     <dimen name="pepega_height">160dp</dimen>
     <dimen name="delicious_food_size">48sp</dimen>
+    <dimen name="card_image_spacing">80dp</dimen>
 </resources>

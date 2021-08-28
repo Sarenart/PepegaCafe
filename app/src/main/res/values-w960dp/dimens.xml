@@ -6,4 +6,5 @@
     <dimen name="pizza_width">480dp</dimen>
     <dimen name="pizza_height">120dp</dimen>
     <dimen name="pepega_height">240dp</dimen>
+    <dimen name="card_image_spacing">120dp</dimen>
 </resources>
